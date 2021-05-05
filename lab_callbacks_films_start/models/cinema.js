@@ -9,19 +9,19 @@ Cinema.prototype.getFilmTitles = function() {
   return filmTitles;
 };
 
-Cinema.prototype.getFilmByTitle = function(title) {
-  const foundFilm = this.films.find((film) => {
-    return film.title === title;
-  });
-  return foundFilm;
-};
+// Cinema.prototype.getFilmByTitle = function(title) {
+//   const foundFilm = this.films.find((film) => {
+//     return film.title === title;
+//   });
+//   return foundFilm;
+// };
 
-Cinema.prototype.getFilmsByGenre = function(genre) {
-  const filmsOfGenre = this.films.filter((film) => {
-    return film.genre === genre;
-  });
-  return filmsOfGenre;
-};
+// Cinema.prototype.getFilmsByGenre = function(genre) {
+//   const filmsOfGenre = this.films.filter((film) => {
+//     return film.genre === genre;
+//   });
+//   return filmsOfGenre;
+// };
 
 Cinema.prototype.getFilmsByYear = function(year) {
   const filmsOfYear = this.films.filter((film) => {
@@ -31,7 +31,7 @@ Cinema.prototype.getFilmsByYear = function(year) {
 }
 
 Cinema.prototype.filmByYearTrue = function(year) {
-  const filmsOfYear = this.getFilmsByYear(year);
+  const filmsOfYear = this.filmsByProperty('year', year);
   if (filmsOfYear.length === 0) {
     return false;
   };
@@ -56,11 +56,14 @@ Cinema.prototype.totalRuntime = function() {
   }, 0);
   return totalTime;
 };
-
+// Function takes in two arguements and returns film objects with the matching value.filmsByProperty
+// const allFilms assigned this.films.filter array
+// function iterates through the film array using the two arguements, in this case 'year' & 2018.
+// when films with property of year equals 2018, films are added to new array and returned to terminal.
+// This method can be used for any key value pair in the film object array.
 Cinema.prototype.filmsByProperty = function(property, value ){
   const allFilms = this.films.filter((film) => {
     return film[property] === value
-
   }) 
 return allFilms
 }
